@@ -1,16 +1,18 @@
-/* Estilo principal */
+/* Fonte moderna */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #121212; /* Fundo escuro */
-    color: #e0e0e0; /* Texto claro */
+    background-color: #f4f4f9; /* Fundo claro e suave */
+    color: #333; /* Texto escuro e legível */
 }
 
+/* Cabeçalho com gradiente */
 header {
-    background: #1f1f1f; /* Fundo do cabeçalho escuro */
+    background: linear-gradient(90deg, #007bff, #6610f2); /* Gradiente azul/roxo */
     color: #fff;
-    padding: 10px 20px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para o cabeçalho */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -21,8 +23,26 @@ nav a {
     color: #fff;
     margin: 0 15px;
     text-decoration: none;
+    font-weight: bold;
+    position: relative;
 }
 
+nav a::after {
+    content: '';
+    width: 0;
+    height: 2px;
+    background: #fff;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Caixa de busca estilizada */
 .search-container {
     display: flex;
     align-items: center;
@@ -30,103 +50,86 @@ nav a {
 }
 
 #search-input {
-    width: 150px;
-    padding: 5px;
-    margin-right: 5px;
-    border: 1px solid #444;
-    border-radius: 4px;
-    background-color: #333;
-    color: #fff;
+    width: 250px;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #007bff;
+    border-radius: 20px;
+    background-color: #fff;
+    color: #333;
+    transition: box-shadow 0.3s ease;
+}
+
+#search-input:focus {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.4);
 }
 
 #search-button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-#search-button:hover {
-    background: #0056b3;
-}
-
-.product-list {
-    padding: 20px;
-}
-
-.product {
-    border: 1px solid #444;
-    padding: 10px;
-    margin: 10px 0;
-    background-color: #1f1f1f;
-}
-
-.product h3 {
-    margin: 0;
-}
-
-.product p {
-    margin: 5px 0;
-}
-
-button {
     background: #28a745;
     color: white;
     border: none;
-    padding: 10px;
+    padding: 10px 20px;
     cursor: pointer;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: background 0.3s ease;
 }
 
-button:hover {
+#search-button:hover {
     background: #218838;
 }
 
-/* Estilo do Meu Perfil com menu suspenso */
-.profile-menu {
-    position: relative;
-    display: inline-block;
+/* Estilo dos cartões de produto */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 40px;
+    background-color: #f4f4f9;
 }
 
-#profile-button {
-    background-color: #007bff;
+.product {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.product:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.product h3 {
+    margin: 10px 0;
+    font-size: 1.5rem;
+    color: #007bff;
+}
+
+.product p {
+    font-size: 1rem;
+    color: #666;
+}
+
+button {
+    background: linear-gradient(90deg, #007bff, #6610f2);
     color: white;
     border: none;
-    padding: 10px;
+    padding: 10px 20px;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background 0.3s ease;
 }
 
-#profile-button:hover {
-    background-color: #0056b3;
+button:hover {
+    background: linear-gradient(90deg, #6610f2, #007bff);
 }
 
-.profile-dropdown {
-    display: none;
-    position: absolute;
-    background-color: #1f1f1f;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.profile-dropdown a {
-    color: white;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.profile-dropdown a:hover {
-    background-color: #575757;
-}
-
-.profile-menu:hover .profile-dropdown {
-    display: block;
-}
-
-/* Modal do Carrinho */
+/* Modal do Carrinho com desfoque no fundo */
 .modal {
     display: none;
     position: fixed;
@@ -135,18 +138,20 @@ button:hover {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px); /* Efeito de desfoque */
 }
 
 .modal-content {
-    background-color: #1f1f1f;
-    color: #e0e0e0;
+    background-color: #fff;
+    color: #333;
     margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
+    padding: 40px;
+    border-radius: 10px;
     width: 80%;
-    max-width: 500px;
+    max-width: 600px;
     text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .close {
@@ -158,44 +163,17 @@ button:hover {
 
 .close:hover,
 .close:focus {
-    color: #fff;
+    color: #333;
     text-decoration: none;
     cursor: pointer;
 }
 
-#cart-items {
-    list-style: none;
-    padding: 0;
-}
-
-#cart-items li {
-    padding: 10px;
-    border-bottom: 1px solid #444;
-}
-
-#empty-cart-message {
-    display: none;
-}
-
-#clear-cart {
-    background-color: #ff5555;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 20px;
-}
-
-#clear-cart:hover {
-    background-color: #d44d4d;
-}
-
+/* Footer estilizado */
 footer {
     background: #1f1f1f;
     color: #e0e0e0;
     text-align: center;
-    padding: 20px;
+    padding: 40px 20px;
 }
 
 .footer-content p {
@@ -205,4 +183,83 @@ footer {
 .footer-bottom {
     border-top: 1px solid #444;
     padding-top: 10px;
+    margin-top: 10px;
+}
+
+/* Estilo do Meu Perfil com menu suspenso */
+.profile-menu {
+    position: relative;
+    display: inline-block;
+}
+
+#profile-button {
+    background-color: #6610f2;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+#profile-button:hover {
+    background-color: #007bff;
+}
+
+.profile-dropdown {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    color: #333;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.profile-dropdown a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-radius: 10px;
+}
+
+.profile-dropdown a:hover {
+    background-color: #f4f4f9;
+}
+
+.profile-menu:hover .profile-dropdown {
+    display: block;
+}
+
+/* Submenu para Meus Pedidos */
+.pedido-dropdown {
+    display: none;
+    position: relative;
+    background-color: #fff;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#pedido-lista div {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#pedido-lista ul {
+    list-style: none;
+    padding: 0;
+}
+
+#pedido-lista li {
+    margin: 5px 0;
+}
+
+#meus-pedidos:hover + .pedido-dropdown,
+#pedido-lista.show {
+    display: block;
 }
